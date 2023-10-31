@@ -6,12 +6,13 @@ import {Base_Test, HorseStore, HorseStoreYul} from "./Base_Test.t.sol";
 contract HorseStoreSymbolic is Base_Test {
     // https://twitter.com/zachobront/status/1633906650514898947
     // halmos --function check_storeAndReadAreIdentical
+    // halmos --function check_storeAndReadAreIdentical --storage-layout generic --debug --ffi
     function check_storeAndReadAreIdentical(uint256 randomNumber) public {
-        // horseStoreHuff.updateHorseNumber(randomNumber);
+        horseStoreHuff.updateHorseNumber(randomNumber);
         // horseStoreYul.updateHorseNumber(randomNumber);
         horseStoreSol.updateHorseNumber(randomNumber);
 
-        // assert(horseStoreHuff.readNumberOfHorses() == randomNumber);
+        assert(horseStoreHuff.readNumberOfHorses() == randomNumber);
         // assert(horseStoreYul.readNumberOfHorses() == randomNumber);
         assert(horseStoreSol.readNumberOfHorses() == randomNumber);
     }
