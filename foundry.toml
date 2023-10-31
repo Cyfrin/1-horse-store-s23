@@ -5,6 +5,7 @@ libs = ["lib"]
 ffi = true
 optimizer = true
 evm_version = 'shanghai'
+fs_permissions = [{ access = "read", path = "./" }]
 
 remappings = ['foundry-huff/=lib/foundry-huff/src/']
 

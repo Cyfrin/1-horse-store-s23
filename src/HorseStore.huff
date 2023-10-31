@@ -3,19 +3,19 @@
 #define function readNumberOfHorses() view returns (uint256)
 
 /* Storage Slots */
-#define constant VALUE_LOCATION = FREE_STORAGE_POINTER()
+#define constant NUMBER_OF_HORSES_LOCATION = FREE_STORAGE_POINTER()
 
 /* Methods */
-#define macro SET_VALUE() = takes (0) returns (0) {
+#define macro SET_NUMBER_OF_HORSES() = takes (0) returns (0) {
     0x04 calldataload   // [value]
-    [VALUE_LOCATION]    // [ptr, value]
+    [NUMBER_OF_HORSES_LOCATION]    // [ptr, value]
     sstore              // []
     stop
 }
 
-#define macro GET_VALUE() = takes (0) returns (0) {
+#define macro GET_NUMBER_OF_HORSES() = takes (0) returns (0) {
     // Load value from storage.
-    [VALUE_LOCATION]   // [ptr]
+    [NUMBER_OF_HORSES_LOCATION]   // [ptr]
     sload                // [value]
 
     // Store value in memory.
@@ -38,7 +38,7 @@
     dup1 __FUNC_SIG(readNumberOfHorses) eq readJump jumpi
 
     updateJump:
-        SET_VALUE()
+        SET_NUMBER_OF_HORSES()
     readJump:
-        GET_VALUE()
+        GET_NUMBER_OF_HORSES()
 }

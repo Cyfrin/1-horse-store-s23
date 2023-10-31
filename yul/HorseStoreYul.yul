@@ -1,3 +1,5 @@
+// Try this in the playground! https://www.evm.codes/playground
+
 object "HorseStoreYul" {
      code {
         // Contract deployment
