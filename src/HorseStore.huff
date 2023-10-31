@@ -1,0 +1,44 @@
+/* Interface */
+#define function updateHorseNumber(uint256) nonpayable returns ()
+#define function readNumberOfHorses() view returns (uint256)
+
+/* Storage Slots */
+#define constant VALUE_LOCATION = FREE_STORAGE_POINTER()
+
+/* Methods */
+#define macro SET_VALUE() = takes (0) returns (0) {
+    0x04 calldataload   // [value]
+    [VALUE_LOCATION]    // [ptr, value]
+    sstore              // []
+    stop
+}
+
+#define macro GET_VALUE() = takes (0) returns (0) {
+    // Load value from storage.
+    [VALUE_LOCATION]   // [ptr]
+    sload                // [value]
+
+    // Store value in memory.
+    0x00 mstore
+
+    // Return value
+    0x20 0x00 return
+}
+
+#define macro MAIN() = takes (0) returns (0) {
+    // Identify which function is being called.
+    0x00 calldataload 0xE0 shr
+    // __FUNC_SIG("updateHorseNumber(uint256)")
+    // cast sig "updateHorseNumber(uint256)"
+    // dup1 0xcdfead2e eq set jumpi
+    dup1 __FUNC_SIG(updateHorseNumber) eq updateJump jumpi
+    
+    // __FUNC_SIG("readNumberOfHorses()")
+    // cast sig "readNumberOfHorses()"
+    dup1 __FUNC_SIG(readNumberOfHorses) eq readJump jumpi
+
+    updateJump:
+        SET_VALUE()
+    readJump:
+        GET_VALUE()
+}
