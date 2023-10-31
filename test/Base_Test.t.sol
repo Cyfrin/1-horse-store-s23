@@ -29,3 +29,19 @@ abstract contract Base_Test is Test {
         horseStoreSol = new HorseStore();
     }
 }
+
+// TODO
+// // using runtime bytecode:
+// //      huffc src/HorseStore.huff --bin-runtime
+// //
+// // horseStoreHuff = HorseStore(address(new Dummy()));
+// // vm.etch(address(horseStoreHuff), hex"5f3560e01c8063cdfead2e1461001b578063e026c01714610022575b6004355f55005b5f545f5260205ff3");
+
+// // using deployment bytecode:
+// //      huffc src/HorseStore.huff --bytecode
+// bytes memory deployBytecode = hex"602b8060093d393df35f3560e01c8063cdfead2e1461001b578063e026c01714610022575b6004355f55005b5f545f5260205ff3";
+// address horseStoreHuffAddr;
+// assembly {
+//     horseStoreHuffAddr := create(0, add(deployBytecode, 0x20), mload(deployBytecode))
+// }
+// horseStoreHuff = HorseStore(horseStoreHuffAddr);
