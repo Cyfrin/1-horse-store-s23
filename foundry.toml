@@ -7,7 +7,13 @@ optimizer = true
 evm_version = 'shanghai'
 fs_permissions = [{ access = "read", path = "./" }]
 
-remappings = ['foundry-huff/=lib/foundry-huff/src/']
+remappings = [
+    'foundry-huff/=lib/foundry-huff/src/',
+    '@openzeppelin/=lib/openzeppelin-contracts/',
+]
 
+[fuzz]
+runs = 256
+seed = '0x3'
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options

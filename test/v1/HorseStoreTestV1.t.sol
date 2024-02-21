@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.20;
 
-import {Base_Test, HorseStore, HorseStoreYul} from "./Base_Test.t.sol";
+import {Base_TestV1, HorseStore, HorseStoreYul} from "./Base_TestV1.t.sol";
 import {HuffDeployer} from "foundry-huff/HuffDeployer.sol";
 
-contract HorseStoreTest is Base_Test {
+contract HorseStoreTestV1 is Base_TestV1 {
     function setUp() public override {
         super.setUp();
         horseStoreHuff = HorseStore(HuffDeployer.config().deploy(horseStoreLocation));

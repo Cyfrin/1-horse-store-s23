@@ -1,3 +1,4 @@
+// We breakdown the huff contract
 // Binary: 602b8060093d393df35f3560e01c8063cdfead2e1461001b578063e026c01714610022575b6004355f55005b5f545f5260205ff3
 
 // 1. Contract Creation Code
