@@ -40,3 +40,5 @@ slither :; slither . --config-file slither.config.json
 huff :; huffc -e shanghai -b ./src/HorseStore.huff > compiled_huff.txt
 
 yul :; solc --strict-assembly --optimize --optimize-runs 20000 yul/HorseStoreYul.yul --bin | grep 60 
+
+aderyn :; aderyn . 
